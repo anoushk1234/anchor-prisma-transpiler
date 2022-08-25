@@ -1,17 +1,17 @@
 {
-  "version": "0.1.1",
-  "name": "squads_mpl",
+  "version": "0.1.0",
+  "name": "metapass_program",
   "instructions": [
     {
-      "name": "create",
+      "name": "initializeHost",
       "accounts": [
         {
-          "name": "multisig",
+          "name": "eventHostAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "creator",
+          "name": "authority",
           "isMut": true,
           "isSigner": true
         },
@@ -23,15 +23,282 @@
       ],
       "args": [
         {
-          "name": "threshold",
-          "type": "u16"
+          "name": "displayName",
+          "type": "string"
         },
         {
-          "name": "createKey",
-          "type": "publicKey"
+          "name": "profileImg",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "initializeEvent",
+      "accounts": [
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
         },
         {
-          "name": "members",
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "eventHostAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "createEventInfo",
+          "type": {
+            "defined": "CreateEventInput"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mintTicket",
+      "accounts": [
+        {
+          "name": "mintAuthority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "masterEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventHost",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventHostKey",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminKey",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "customSplToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "customSplTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "senderCustomSplTokenAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hostCustomSplTokenAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminCustomTokenAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "mintTicketForFree",
+      "accounts": [
+        {
+          "name": "mintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "attendeeTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "masterEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventHost",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "eventHostKey",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminKey",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "initializeAdmin",
+      "accounts": [
+        {
+          "name": "adminAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "adminAuthority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "admins",
           "type": {
             "vec": "publicKey"
           }
@@ -39,550 +306,171 @@
       ]
     },
     {
-      "name": "addMember",
+      "name": "addPartners",
       "accounts": [
         {
-          "name": "multisig",
+          "name": "adminAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "member",
+          "name": "adminAuthority",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
         {
-          "name": "newMember",
+          "name": "partner",
           "type": "publicKey"
         }
       ]
     },
     {
-      "name": "removeMember",
+      "name": "removePartner",
       "accounts": [
         {
-          "name": "multisig",
+          "name": "adminAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "multisigAuth",
+          "name": "adminAuthority",
           "isMut": true,
           "isSigner": true
         }
       ],
       "args": [
         {
-          "name": "oldMember",
+          "name": "address",
           "type": "publicKey"
         }
       ]
-    },
-    {
-      "name": "removeMemberAndChangeThreshold",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": [
-        {
-          "name": "oldMember",
-          "type": "publicKey"
-        },
-        {
-          "name": "newThreshold",
-          "type": "u16"
-        }
-      ]
-    },
-    {
-      "name": "addMemberAndChangeThreshold",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "newMember",
-          "type": "publicKey"
-        },
-        {
-          "name": "newThreshold",
-          "type": "u16"
-        }
-      ]
-    },
-    {
-      "name": "changeThreshold",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": [
-        {
-          "name": "newThreshold",
-          "type": "u16"
-        }
-      ]
-    },
-    {
-      "name": "addAuthority",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "setExternalExecute",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "multisigAuth",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": [
-        {
-          "name": "setting",
-          "type": "bool"
-        }
-      ]
-    },
-    {
-      "name": "createTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "creator",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "authorityIndex",
-          "type": "u32"
-        }
-      ]
-    },
-    {
-      "name": "activateTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "creator",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "addInstruction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "instruction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "creator",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "incomingInstruction",
-          "type": {
-            "defined": "IncomingInstruction"
-          }
-        }
-      ]
-    },
-    {
-      "name": "approveTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "rejectTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "cancelTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "executeTransaction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": [
-        {
-          "name": "accountList",
-          "type": "bytes"
-        }
-      ]
-    },
-    {
-      "name": "executeInstruction",
-      "accounts": [
-        {
-          "name": "multisig",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "transaction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "instruction",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "member",
-          "isMut": true,
-          "isSigner": true
-        }
-      ],
-      "args": []
     }
   ],
   "accounts": [
     {
-      "name": "Ms",
+      "name": "EventAccount",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "threshold",
-            "type": "u16"
+            "name": "title",
+            "type": "string"
           },
           {
-            "name": "authorityIndex",
-            "type": "u16"
+            "name": "description",
+            "type": "string"
           },
           {
-            "name": "transactionIndex",
-            "type": "u32"
+            "name": "uri",
+            "type": "string"
           },
           {
-            "name": "msChangeIndex",
-            "type": "u32"
+            "name": "link",
+            "type": "string"
+          },
+          {
+            "name": "fee",
+            "type": "u64"
+          },
+          {
+            "name": "seats",
+            "type": "u64"
+          },
+          {
+            "name": "occupiedSeats",
+            "type": "u64"
+          },
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "type": "publicKey"
+          },
+          {
+            "name": "venue",
+            "type": "string"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "creators",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "eventHost",
+            "type": {
+              "defined": "EventHost"
+            }
+          },
+          {
+            "name": "eventNonce",
+            "type": "u64"
           },
           {
             "name": "bump",
             "type": "u8"
           },
           {
-            "name": "createKey",
-            "type": "publicKey"
-          },
-          {
-            "name": "allowExternalExecute",
+            "name": "isCutPayedByCreator",
             "type": "bool"
           },
           {
-            "name": "keys",
+            "name": "isCustomSplToken",
+            "type": "bool"
+          },
+          {
+            "name": "customSplToken",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventHostAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "eventHostStruct",
             "type": {
-              "vec": "publicKey"
+              "defined": "EventHost"
             }
           }
         ]
       }
     },
     {
-      "name": "MsTransaction",
+      "name": "AdminAccount",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "creator",
-            "type": "publicKey"
-          },
-          {
-            "name": "ms",
-            "type": "publicKey"
-          },
-          {
-            "name": "transactionIndex",
-            "type": "u32"
-          },
-          {
-            "name": "authorityIndex",
-            "type": "u32"
-          },
-          {
-            "name": "authorityBump",
-            "type": "u8"
-          },
-          {
-            "name": "status",
+            "name": "admins",
             "type": {
-              "defined": "MsTransactionStatus"
+              "vec": "publicKey"
             }
-          },
-          {
-            "name": "instructionIndex",
-            "type": "u8"
           },
           {
             "name": "bump",
             "type": "u8"
           },
           {
-            "name": "approved",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "rejected",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "cancelled",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "executedIndex",
-            "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "MsInstruction",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "programId",
+            "name": "authority",
             "type": "publicKey"
           },
           {
-            "name": "keys",
+            "name": "verifiedPartners",
             "type": {
-              "vec": {
-                "defined": "MsAccountMeta"
-              }
+              "vec": "publicKey"
             }
-          },
-          {
-            "name": "data",
-            "type": "bytes"
-          },
-          {
-            "name": "instructionIndex",
-            "type": "u8"
-          },
-          {
-            "name": "bump",
-            "type": "u8"
-          },
-          {
-            "name": "executed",
-            "type": "bool"
           }
         ]
       }
@@ -590,71 +478,87 @@
   ],
   "types": [
     {
-      "name": "MsAccountMeta",
+      "name": "EventHost",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "pubkey",
-            "type": "publicKey"
-          },
-          {
-            "name": "isSigner",
-            "type": "bool"
-          },
-          {
-            "name": "isWritable",
-            "type": "bool"
-          }
-        ]
-      }
-    },
-    {
-      "name": "IncomingInstruction",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "programId",
-            "type": "publicKey"
-          },
-          {
-            "name": "keys",
+            "name": "eventsCreated",
             "type": {
-              "vec": {
-                "defined": "MsAccountMeta"
-              }
+              "vec": "publicKey"
             }
           },
           {
-            "name": "data",
-            "type": "bytes"
+            "name": "displayName",
+            "type": "string"
+          },
+          {
+            "name": "pubKey",
+            "type": "publicKey"
+          },
+          {
+            "name": "profileImage",
+            "type": "string"
+          },
+          {
+            "name": "eventCount",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
           }
         ]
       }
     },
     {
-      "name": "MsTransactionStatus",
+      "name": "CreateEventInput",
       "type": {
-        "kind": "enum",
-        "variants": [
+        "kind": "struct",
+        "fields": [
           {
-            "name": "Draft"
+            "name": "title",
+            "type": "string"
           },
           {
-            "name": "Active"
+            "name": "description",
+            "type": "string"
           },
           {
-            "name": "ExecuteReady"
+            "name": "uri",
+            "type": "string"
           },
           {
-            "name": "Executed"
+            "name": "link",
+            "type": "string"
           },
           {
-            "name": "Rejected"
+            "name": "fee",
+            "type": "u64"
           },
           {
-            "name": "Cancelled"
+            "name": "seats",
+            "type": "u64"
+          },
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "venue",
+            "type": "string"
+          },
+          {
+            "name": "isCutPayedByCreator",
+            "type": "bool"
+          },
+          {
+            "name": "isCustomSplToken",
+            "type": "bool"
+          },
+          {
+            "name": "customSplToken",
+            "type": "publicKey"
           }
         ]
       }
@@ -663,55 +567,26 @@
   "errors": [
     {
       "code": 6000,
-      "name": "KeyNotInMultisig"
+      "name": "InvalidCustomSplToken",
+      "msg": "Custom SPL Token doesnt match with Host provided token"
     },
     {
       "code": 6001,
-      "name": "InvalidTransactionState"
+      "name": "SignerNotAdmin",
+      "msg": "The Signer of this transaction is not the admin"
     },
     {
       "code": 6002,
-      "name": "InvalidNumberOfAccounts"
+      "name": "DataNotUpdated",
+      "msg": "data not updated"
     },
     {
       "code": 6003,
-      "name": "InvalidInstructionAccount"
-    },
-    {
-      "code": 6004,
-      "name": "InvalidAuthorityIndex"
-    },
-    {
-      "code": 6005,
-      "name": "TransactionAlreadyExecuted"
-    },
-    {
-      "code": 6006,
-      "name": "CannotRemoveSoloMember"
-    },
-    {
-      "code": 6007,
-      "name": "InvalidThreshold"
-    },
-    {
-      "code": 6008,
-      "name": "DeprecatedTransaction"
-    },
-    {
-      "code": 6009,
-      "name": "InstructionFailed"
-    },
-    {
-      "code": 6010,
-      "name": "MaxMembersReached"
-    },
-    {
-      "code": 6011,
-      "name": "EmptyMembers"
-    },
-    {
-      "code": 6012,
-      "name": "PartialExecution"
+      "name": "WrongInstruction",
+      "msg": "This event is paid but the mint ix is for free tickets"
     }
-  ]
+  ],
+  "metadata": {
+    "address": "2PsDAHY1FEnSrcRkJcL4X8e6ah7meBMLxYvcpdkcEJdK"
+  }
 }

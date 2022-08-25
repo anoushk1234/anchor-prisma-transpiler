@@ -5,7 +5,7 @@ let idlSchema = {
   accounts: JSON.parse(fs.readFileSync("./idl.json", "utf8")).accounts,
   types: JSON.parse(fs.readFileSync("./idl.json", "utf8")).types,
 };
-console.log("hijoiw");
+console.log(idlSchema);
 let currentPrismaSchema = fs.readFileSync("./prisma/schema.prisma", "utf8");
 
 console.log("blah");
@@ -158,7 +158,8 @@ Object.keys(idlSchema).map((key) => {
       }
     }
   } finally {
-    let finalSchema = currentPrismaSchema.concat(`\n ${prismaschema}`);
-    fs.writeFileSync("./prisma/schema.prisma", finalSchema);
+    console.log(prismaschema);
+    // let finalSchema = currentPrismaSchema.concat(`\n ${prismaschema}`);
+    fs.appendFileSync("./prisma/schema.prisma", prismaschema);
   }
 });
