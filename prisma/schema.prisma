@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MsAccountMeta {
+  MsAccountMetaId                          String               @id @default(uuid())
+  pubkey                                   String
+  isSigner                                 String
+  isWritable                               String
+  IncomingInstruction                      IncomingInstruction? @relation(fields: [incomingInstructionIncomingInstructionId], references: [IncomingInstructionId])
+  incomingInstructionIncomingInstructionId String?
+}
+
+model IncomingInstruction {
+  IncomingInstructionId String          @id @default(uuid())
+  programId             String
+  keys                  MsAccountMeta[]
+  keysId                String
+  data                  String
+}
+
+enum MsTransactionStatus {
+  Draft
+  Active
+  ExecuteReady
+  Executed
+  Rejected
+  Cancelled
+}

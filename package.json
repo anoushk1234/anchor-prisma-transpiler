@@ -1,0 +1,20 @@
+{
+  "name": "anchor-prisma-transpiler",
+  "version": "1.0.0",
+  "main": "core/index.ts",
+  "repository": "https://github.com/anoushk1234/anchor-prisma-transpiler.git",
+  "author": "anoushk1234 <anoushka1828@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "setup": "npx prisma init && ts-node core/index.ts && npx prisma format",
+    "start": "ts-node core/index.ts && npx prisma format",
+    "dev": "nodemon core/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.2.1",
+    "fs": "^0.0.1-security",
+    "prisma": "^4.2.1",
+    "ts-node": "^10.9.1"
+  }
+}
