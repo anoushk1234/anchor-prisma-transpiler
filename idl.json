@@ -1,112 +1,29 @@
 {
-  "version": "0.1.0",
-  "name": "metapass_program",
+  "version": "4.0.0",
+  "name": "candy_machine",
   "instructions": [
     {
-      "name": "initializeHost",
+      "name": "initializeCandyMachine",
       "accounts": [
         {
-          "name": "eventHostAccount",
+          "name": "candyMachine",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": false,
           "isSigner": false
         },
         {
           "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "displayName",
-          "type": "string"
-        },
-        {
-          "name": "profileImg",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "initializeEvent",
-      "accounts": [
-        {
-          "name": "eventAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "authority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "eventHostAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "createEventInfo",
-          "type": {
-            "defined": "CreateEventInput"
-          }
-        }
-      ]
-    },
-    {
-      "name": "mintTicket",
-      "accounts": [
-        {
-          "name": "mintAuthority",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "eventAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mint",
-          "isMut": true,
-          "isSigner": true
-        },
-        {
-          "name": "tokenProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "metadata",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenMetadataProgram",
           "isMut": false,
           "isSigner": false
         },
         {
           "name": "payer",
-          "isMut": true,
-          "isSigner": false
+          "isMut": false,
+          "isSigner": true
         },
         {
           "name": "systemProgram",
@@ -117,116 +34,123 @@
           "name": "rent",
           "isMut": false,
           "isSigner": false
-        },
+        }
+      ],
+      "args": [
         {
-          "name": "masterEdition",
+          "name": "data",
+          "type": {
+            "defined": "CandyMachineData"
+          }
+        }
+      ]
+    },
+    {
+      "name": "updateCandyMachine",
+      "accounts": [
+        {
+          "name": "candyMachine",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "eventHost",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "eventHostKey",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "adminAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "adminKey",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "customSplToken",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "customSplTokenProgram",
+          "name": "authority",
           "isMut": false,
-          "isSigner": false
+          "isSigner": true
         },
         {
-          "name": "senderCustomSplTokenAta",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "hostCustomSplTokenAta",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "adminCustomTokenAta",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "associatedTokenProgram",
+          "name": "wallet",
           "isMut": false,
           "isSigner": false
         }
       ],
       "args": [
         {
-          "name": "uri",
-          "type": "string"
+          "name": "data",
+          "type": {
+            "defined": "CandyMachineData"
+          }
         }
       ]
     },
     {
-      "name": "mintTicketForFree",
+      "name": "updateAuthority",
       "accounts": [
         {
-          "name": "mintAuthority",
+          "name": "candyMachine",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "eventAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mint",
-          "isMut": true,
+          "name": "authority",
+          "isMut": false,
           "isSigner": true
         },
         {
-          "name": "tokenProgram",
+          "name": "wallet",
           "isMut": false,
           "isSigner": false
-        },
+        }
+      ],
+      "args": [
         {
-          "name": "metadata",
+          "name": "newAuthority",
+          "type": {
+            "option": "publicKey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "addConfigLines",
+      "accounts": [
+        {
+          "name": "candyMachine",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "payerTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "attendeeTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenMetadataProgram",
+          "name": "authority",
           "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u32"
+        },
+        {
+          "name": "configLines",
+          "type": {
+            "vec": {
+              "defined": "ConfigLine"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "setCollection",
+      "accounts": [
+        {
+          "name": "candyMachine",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "collectionPda",
+          "isMut": true,
           "isSigner": false
         },
         {
           "name": "payer",
-          "isMut": true,
+          "isMut": false,
           "isSigner": true
         },
         {
@@ -240,237 +164,288 @@
           "isSigner": false
         },
         {
+          "name": "metadata",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "edition",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionAuthorityRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "removeCollection",
+      "accounts": [
+        {
+          "name": "candyMachine",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "collectionPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionAuthorityRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "mintNft",
+      "accounts": [
+        {
+          "name": "candyMachine",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "candyMachineCreator",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "wallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "updateAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
           "name": "masterEdition",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "eventHost",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "eventHostKey",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "adminAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "adminKey",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "associatedTokenProgram",
+          "name": "tokenMetadataProgram",
           "isMut": false,
           "isSigner": false
-        }
-      ],
-      "args": [
-        {
-          "name": "uri",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "initializeAdmin",
-      "accounts": [
-        {
-          "name": "adminAccount",
-          "isMut": true,
-          "isSigner": false
         },
         {
-          "name": "adminAuthority",
-          "isMut": true,
-          "isSigner": true
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
         },
         {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "recentBlockhashes",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "instructionSysvarAccount",
+          "isMut": false,
+          "isSigner": false
         }
       ],
       "args": [
         {
-          "name": "admins",
-          "type": {
-            "vec": "publicKey"
-          }
+          "name": "creatorBump",
+          "type": "u8"
         }
       ]
     },
     {
-      "name": "addPartners",
+      "name": "setCollectionDuringMint",
       "accounts": [
         {
-          "name": "adminAccount",
+          "name": "candyMachine",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "metadata",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "collectionPda",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "adminAuthority",
-          "isMut": true,
-          "isSigner": true
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "instructions",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionMetadata",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionMasterEdition",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collectionAuthorityRecord",
+          "isMut": false,
+          "isSigner": false
         }
       ],
-      "args": [
-        {
-          "name": "partner",
-          "type": "publicKey"
-        }
-      ]
+      "args": []
     },
     {
-      "name": "removePartner",
+      "name": "withdrawFunds",
       "accounts": [
         {
-          "name": "adminAccount",
+          "name": "candyMachine",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "adminAuthority",
-          "isMut": true,
+          "name": "authority",
+          "isMut": false,
           "isSigner": true
         }
       ],
-      "args": [
-        {
-          "name": "address",
-          "type": "publicKey"
-        }
-      ]
+      "args": []
     }
   ],
   "accounts": [
     {
-      "name": "EventAccount",
+      "name": "CandyMachine",
       "type": {
         "kind": "struct",
         "fields": [
-          {
-            "name": "title",
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "type": "string"
-          },
-          {
-            "name": "uri",
-            "type": "string"
-          },
-          {
-            "name": "link",
-            "type": "string"
-          },
-          {
-            "name": "fee",
-            "type": "u64"
-          },
-          {
-            "name": "seats",
-            "type": "u64"
-          },
-          {
-            "name": "occupiedSeats",
-            "type": "u64"
-          },
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "collection",
-            "type": "publicKey"
-          },
-          {
-            "name": "venue",
-            "type": "string"
-          },
           {
             "name": "authority",
             "type": "publicKey"
           },
           {
-            "name": "creators",
+            "name": "wallet",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint",
             "type": {
-              "vec": "publicKey"
+              "option": "publicKey"
             }
           },
           {
-            "name": "eventHost",
-            "type": {
-              "defined": "EventHost"
-            }
-          },
-          {
-            "name": "eventNonce",
+            "name": "itemsRedeemed",
             "type": "u64"
           },
           {
-            "name": "bump",
-            "type": "u8"
-          },
-          {
-            "name": "isCutPayedByCreator",
-            "type": "bool"
-          },
-          {
-            "name": "isCustomSplToken",
-            "type": "bool"
-          },
-          {
-            "name": "customSplToken",
-            "type": "publicKey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "EventHostAccount",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "eventHostStruct",
+            "name": "data",
             "type": {
-              "defined": "EventHost"
+              "defined": "CandyMachineData"
             }
           }
         ]
       }
     },
     {
-      "name": "AdminAccount",
+      "name": "CollectionPDA",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "admins",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "bump",
-            "type": "u8"
-          },
-          {
-            "name": "authority",
+            "name": "mint",
             "type": "publicKey"
           },
           {
-            "name": "verifiedPartners",
-            "type": {
-              "vec": "publicKey"
-            }
+            "name": "candyMachine",
+            "type": "publicKey"
           }
         ]
       }
@@ -478,50 +453,152 @@
   ],
   "types": [
     {
-      "name": "EventHost",
+      "name": "CandyMachineData",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "eventsCreated",
-            "type": {
-              "vec": "publicKey"
-            }
-          },
-          {
-            "name": "displayName",
+            "name": "uuid",
             "type": "string"
           },
           {
-            "name": "pubKey",
-            "type": "publicKey"
-          },
-          {
-            "name": "profileImage",
-            "type": "string"
-          },
-          {
-            "name": "eventCount",
+            "name": "price",
             "type": "u64"
           },
           {
-            "name": "bump",
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "sellerFeeBasisPoints",
+            "type": "u16"
+          },
+          {
+            "name": "maxSupply",
+            "type": "u64"
+          },
+          {
+            "name": "isMutable",
+            "type": "bool"
+          },
+          {
+            "name": "retainAuthority",
+            "type": "bool"
+          },
+          {
+            "name": "goLiveDate",
+            "type": {
+              "option": "i64"
+            }
+          },
+          {
+            "name": "endSettings",
+            "type": {
+              "option": {
+                "defined": "EndSettings"
+              }
+            }
+          },
+          {
+            "name": "creators",
+            "type": {
+              "vec": {
+                "defined": "Creator"
+              }
+            }
+          },
+          {
+            "name": "hiddenSettings",
+            "type": {
+              "option": {
+                "defined": "HiddenSettings"
+              }
+            }
+          },
+          {
+            "name": "whitelistMintSettings",
+            "type": {
+              "option": {
+                "defined": "WhitelistMintSettings"
+              }
+            }
+          },
+          {
+            "name": "itemsAvailable",
+            "type": "u64"
+          },
+          {
+            "name": "gatekeeper",
+            "type": {
+              "option": {
+                "defined": "GatekeeperConfig"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigLine",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EndSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "endSettingType",
+            "type": {
+              "defined": "EndSettingType"
+            }
+          },
+          {
+            "name": "number",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Creator",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "share",
             "type": "u8"
           }
         ]
       }
     },
     {
-      "name": "CreateEventInput",
+      "name": "HiddenSettings",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "title",
-            "type": "string"
-          },
-          {
-            "name": "description",
+            "name": "name",
             "type": "string"
           },
           {
@@ -529,64 +606,198 @@
             "type": "string"
           },
           {
-            "name": "link",
-            "type": "string"
+            "name": "hash",
+            "type": {
+              "array": ["u8", 32]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WhitelistMintSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mode",
+            "type": {
+              "defined": "WhitelistMintMode"
+            }
           },
           {
-            "name": "fee",
-            "type": "u64"
-          },
-          {
-            "name": "seats",
-            "type": "u64"
-          },
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "venue",
-            "type": "string"
-          },
-          {
-            "name": "isCutPayedByCreator",
-            "type": "bool"
-          },
-          {
-            "name": "isCustomSplToken",
-            "type": "bool"
-          },
-          {
-            "name": "customSplToken",
+            "name": "mint",
             "type": "publicKey"
+          },
+          {
+            "name": "presale",
+            "type": "bool"
+          },
+          {
+            "name": "discountPrice",
+            "type": {
+              "option": "u64"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GatekeeperConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "gatekeeperNetwork",
+            "type": "publicKey"
+          },
+          {
+            "name": "expireOnUse",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CandyError",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "IncorrectOwner"
+          },
+          {
+            "name": "Uninitialized"
+          },
+          {
+            "name": "MintMismatch"
+          },
+          {
+            "name": "IndexGreaterThanLength"
+          },
+          {
+            "name": "NumericalOverflowError"
+          },
+          {
+            "name": "TooManyCreators"
+          },
+          {
+            "name": "UuidMustBeExactly6Length"
+          },
+          {
+            "name": "NotEnoughTokens"
+          },
+          {
+            "name": "NotEnoughSOL"
+          },
+          {
+            "name": "TokenTransferFailed"
+          },
+          {
+            "name": "CandyMachineEmpty"
+          },
+          {
+            "name": "CandyMachineNotLive"
+          },
+          {
+            "name": "HiddenSettingsConfigsDoNotHaveConfigLines"
+          },
+          {
+            "name": "CannotChangeNumberOfLines"
+          },
+          {
+            "name": "DerivedKeyInvalid"
+          },
+          {
+            "name": "PublicKeyMismatch"
+          },
+          {
+            "name": "NoWhitelistToken"
+          },
+          {
+            "name": "TokenBurnFailed"
+          },
+          {
+            "name": "GatewayAppMissing"
+          },
+          {
+            "name": "GatewayTokenMissing"
+          },
+          {
+            "name": "GatewayTokenExpireTimeInvalid"
+          },
+          {
+            "name": "NetworkExpireFeatureMissing"
+          },
+          {
+            "name": "CannotFindUsableConfigLine"
+          },
+          {
+            "name": "InvalidString"
+          },
+          {
+            "name": "SuspiciousTransaction"
+          },
+          {
+            "name": "CannotSwitchToHiddenSettings"
+          },
+          {
+            "name": "IncorrectSlotHashesPubkey"
+          },
+          {
+            "name": "IncorrectCollectionAuthority"
+          },
+          {
+            "name": "MismatchedCollectionPDA"
+          },
+          {
+            "name": "MismatchedCollectionMint"
+          },
+          {
+            "name": "SlotHashesEmpty"
+          },
+          {
+            "name": "MetadataAccountMustBeEmpty"
+          },
+          {
+            "name": "MissingSetCollectionDuringMint"
+          },
+          {
+            "name": "NoChangingCollectionDuringMint"
+          },
+          {
+            "name": "CandyCollectionRequiresRetainAuthority"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EndSettingType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Date"
+          },
+          {
+            "name": "Amount"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WhitelistMintMode",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "BurnEveryTime"
+          },
+          {
+            "name": "NeverBurn"
           }
         ]
       }
     }
-  ],
-  "errors": [
-    {
-      "code": 6000,
-      "name": "InvalidCustomSplToken",
-      "msg": "Custom SPL Token doesnt match with Host provided token"
-    },
-    {
-      "code": 6001,
-      "name": "SignerNotAdmin",
-      "msg": "The Signer of this transaction is not the admin"
-    },
-    {
-      "code": 6002,
-      "name": "DataNotUpdated",
-      "msg": "data not updated"
-    },
-    {
-      "code": 6003,
-      "name": "WrongInstruction",
-      "msg": "This event is paid but the mint ix is for free tickets"
-    }
-  ],
-  "metadata": {
-    "address": "2PsDAHY1FEnSrcRkJcL4X8e6ah7meBMLxYvcpdkcEJdK"
-  }
+  ]
 }
