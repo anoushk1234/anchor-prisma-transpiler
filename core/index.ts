@@ -68,8 +68,32 @@ Object.keys(idlSchema).map((key) => {
                     field += f.name.concat(` ${typefield}`);
                   }
                 } else {
-                  let typefield: AnchorTypes | string | null =
-                    typeof f.type == "string" ? AnchorTypes.string : null;
+                  let typefield: AnchorTypes | string = ``; //@ts-ignore
+                  if (f.type.option) {
+                    //@ts-ignore
+                    if (f.type.option.defined) {
+                      //@ts-ignore
+                      console.log(f.type.option.defined, f.name, "fname2"); //@ts-ignore
+                      typefield = ` ${f.type.option.defined} \n ${f.name}Id String`;
+                    } else {
+                      //@ts-ignore
+                      typefield = `${
+                        AnchorTypes[ //@ts-ignore
+                          String(f.type.option) as keyof typeof AnchorTypes
+                        ]
+                      }?`; //@ts-ignore
+                    } //@ts-ignore
+                  } else if (f.type.array) {
+                    typefield = `${
+                      //@ts-ignore
+                      AnchorTypes[ //@ts-ignore
+                        String(f.type.array[0]) as keyof typeof AnchorTypes
+                      ]
+                    }[]`;
+                  } else {
+                    typefield =
+                      AnchorTypes[String(f.type) as keyof typeof AnchorTypes]; //@ts-ignore
+                  }
                   field += f.name.concat(` ${typefield}`);
                 }
               } finally {
@@ -140,8 +164,41 @@ Object.keys(idlSchema).map((key) => {
                     field += f.name.concat(` ${typefield}`);
                   }
                 } else {
-                  let typefield: AnchorTypes | string | null =
-                    typeof f.type == "string" ? AnchorTypes.string : null;
+                  let typefield: AnchorTypes | string = ``; //@ts-ignore
+                  if (f.type.option) {
+                    //@ts-ignore
+                    if (f.type.option.defined) {
+                      //@ts-ignore
+                      console.log(f.type.option.defined, f.name, "fname2"); //@ts-ignore
+                      typefield = ` ${f.type.option.defined} \n ${f.name}Id String`;
+                    } else {
+                      //@ts-ignore
+                      typefield = `${
+                        AnchorTypes[ //@ts-ignore
+                          String(f.type.option) as keyof typeof AnchorTypes
+                        ]
+                      }?`; //@ts-ignore
+                    } //@ts-ignore
+                  } else if (f.type.array) {
+                    if (f.type.array[0].defined) {
+                      typefield = `${
+                        //@ts-ignore
+                        AnchorTypes[ //@ts-ignore
+                          String(f.type.array[0]) as keyof typeof AnchorTypes
+                        ]
+                      }[]`;
+                    } else {
+                      typefield = `${
+                        //@ts-ignore
+                        AnchorTypes[ //@ts-ignore
+                          String(f.type.array[0]) as keyof typeof AnchorTypes
+                        ]
+                      }[]`;
+                    }
+                  } else {
+                    typefield =
+                      AnchorTypes[String(f.type) as keyof typeof AnchorTypes]; //@ts-ignore
+                  }
                   field += f.name.concat(` ${typefield}`);
                 }
               } finally {

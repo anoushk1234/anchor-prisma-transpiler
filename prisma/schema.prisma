@@ -10,53 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model EventAccount {
-  pubkey               String    @id
-  title                String
-  description          String
-  uri                  String
-  link                 String
-  fee                  String
-  seats                String
-  occupiedSeats        String
-  date                 String
-  collection           String
-  venue                String
-  authority            String
-  creators             String[]
-  eventHost            EventHost @relation(fields: [eventHostEventHostId], references: [EventHostId])
-  eventHostId          String
-  eventNonce           String
-  bump                 String
-  isCutPayedByCreator  String
-  isCustomSplToken     String
-  customSplToken       String
-  eventHostEventHostId String
+model Profile {
+  pubkey     String @id
+  authority  String
+  bump       Int
+  randomHash Int[]
 }
 
-model EventHostAccount {
-  pubkey               String    @id
-  eventHostStruct      EventHost @relation(fields: [eventHostEventHostId], references: [EventHostId])
-  eventHostStructId    String
-  eventHostEventHostId String
+model Post {
+  pubkey      String  @id
+  profile     String
+  metadataUri String
+  bump        Int
+  randomHash  Int[]
+  replyTo     String?
 }
 
-model AdminAccount {
-  pubkey           String   @id
-  admins           String[]
-  bump             String
-  authority        String
-  verifiedPartners String[]
-}
-
-model EventHost {
-  EventHostId      String             @id @default(uuid())
-  eventsCreated    String[]
-  displayName      String
-  pubKey           String
-  profileImage     String
-  eventCount       String
-  bump             String
-  EventAccount     EventAccount[]
-  EventHostAccount EventHostAccount[]
+model Connection {
+  pubkey    String @id
+  profile   String
+  authority String
+  bump      Int
 }
