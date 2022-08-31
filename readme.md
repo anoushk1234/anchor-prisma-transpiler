@@ -13,6 +13,9 @@ Anchor program IDL -> Graphql Schema 🕸 <br>
 
 Currently this works with Prisma Schema but we want to add support for more.
 
+# Demo
+[![Demo Video](https://github.com/anoushk1234/anchor-prisma-transpiler/blob/main/anchorprismademo.gif?raw=true)](https://www.loom.com/share/6f9e0f605618457bbf73884a3c66ba81)
+
 # Quickstart
 
 - `yarn install`
